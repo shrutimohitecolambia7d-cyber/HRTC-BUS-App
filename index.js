@@ -5,8 +5,21 @@ const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
 app.use(express.json());
+
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
+
+const busRoutes = require("./routes/bus");
+app.use("/api/buses", busRoutes);
+
+const routeRoutes = require("./routes/route");
+app.use("/api/routes", routeRoutes);
+
+const stopRoutes = require("./routes/stop");
+app.use("/api/stops", stopRoutes);
+
+const liveLocationRoutes = require("./routes/liveLocation");
+app.use("/api/live-location", liveLocationRoutes);
 
 const supabase =
     process.env.SUPABASE_URL && process.env.SUPABASE_KEY
